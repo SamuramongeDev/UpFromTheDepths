@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	
+<PropertyGroup>
+	<!-- The name of the output .dll file. -->
+	<AssemblyName>UpFromTheDepths</AssemblyName>
+	
+	<!-- Basic mod information. (Name, Version and Guid) -->
+	<!-- We shouldn't change the guid after the first release. It can cause some problems. -->
+	<BepInExPluginVersion>1.0.0</BepInExPluginVersion>
+	<BepInExPluginName>Up From The Depths</BepInExPluginName>
+	<BepInExPluginGuid>com.UFTDTeam.UpFromTheDepths</BepInExPluginGuid>
+	
+	<!-- Project configuration. -->
+	<TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>11</LangVersion>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<RootNamespace>UpFromTheDepths</RootNamespace>
+	
+	<!-- NuGet packages sources. -->
+	<RestoreAdditionalProjectSources>
+		https://api.nuget.org/v3/index.json;
+		https://nuget.bepinex.dev/v3/index.json;
+	</RestoreAdditionalProjectSources>
+
+</PropertyGroup>
+	
+	<!-- NuGet packages references. -->
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" IncludeAssets="compile" />
+		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
+		<PackageReference Include="PolySharp" Version="1.13.1" />
+		<PackageReference Include="Subnautica.Nautilus" Version="1.*-*" PrivateAssets="all" />
+	</ItemGroup>
+	
+	<!-- I dunno what is this. -->
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+	</ItemGroup>
+
+</Project>
