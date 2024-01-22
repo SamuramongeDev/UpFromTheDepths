@@ -3,26 +3,26 @@ using BepInEx.Logging;
 using HarmonyLib;
 using System.Reflection;
 
-namespace UpFromTheDepths
+namespace UpFromTheDepths;
+
+// To change the version go to UpFromTheDepths.csproj
+[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+[BepInDependency("com.snmodding.nautilus")]
+public class Plugin : BaseUnityPlugin
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-    [BepInDependency("com.snmodding.nautilus")]
-    public class Plugin : BaseUnityPlugin
+    public new static ManualLogSource Logger { get; private set; }
+
+    private static readonly Harmony harmony = new(PluginInfo.PLUGIN_GUID);
+
+    // Set up the mod.
+    private void Awake()
     {
-        public new static ManualLogSource Logger { get; private set; }
+        Logger = base.Logger;
 
-        private static readonly Harmony harmony = new(PluginInfo.PLUGIN_GUID);
+        // Run patches and initialize things.
+        harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-        // Set up the mod.
-        private void Awake()
-        {
-            Logger = base.Logger;
-
-            // Run patches and initialize things.
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-
-            // Not strictly necessary but is good to have.
-            Logger.LogInfo("UpFromTheDepths loaded correctly!");
-        }
+        // Not strictly necessary but is good to have.
+        Logger.LogInfo("UpFromTheDepths loaded correctly!");
     }
 }

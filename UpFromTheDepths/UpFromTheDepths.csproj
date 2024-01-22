@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	
 <PropertyGroup>
 	<!-- The name of the output .dll file. -->
@@ -6,7 +6,7 @@
 	
 	<!-- Basic mod information. (Name, Version and Guid) -->
 	<!-- We shouldn't change the guid after the first release. It can cause some problems. -->
-	<BepInExPluginVersion>1.0.0</BepInExPluginVersion>
+	<BepInExPluginVersion>1.0.0</BepInExPluginVersion> <!-- Version Here. -->
 	<BepInExPluginName>Up From The Depths</BepInExPluginName>
 	<BepInExPluginGuid>com.UFTDTeam.UpFromTheDepths</BepInExPluginGuid>
 	
@@ -33,6 +33,13 @@
 		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
 		<PackageReference Include="PolySharp" Version="1.13.1" />
 		<PackageReference Include="Subnautica.Nautilus" Version="1.*-*" PrivateAssets="all" />
+	</ItemGroup>
+
+	<!-- File Dependencies. (In project directory) -->
+	<ItemGroup>
+		<Reference Include="ECCLibrary">
+			<HintPath>..\FileDependencies\ECCLibrary.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 	
 	<!-- I dunno what is this. -->
